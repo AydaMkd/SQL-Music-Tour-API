@@ -1,10 +1,12 @@
-// DEPENDENCIES
+
+   
+// Dependencies
 const stages = require('express').Router()
 const db = require('../models')
 const { Stage } = db 
 const { Op } = require('sequelize')
 
-// FIND ALL STAGES
+
 stages.get('/', async (req, res) => {
     try {
         const foundStages = await Stage.findAll({
@@ -30,7 +32,7 @@ stages.get('/:id', async (req, res) => {
     }
 })
 
-// CREATE A STAGE
+
 stages.post('/', async (req, res) => {
     try {
         const newStage = await Stage.create(req.body)
@@ -43,7 +45,7 @@ stages.post('/', async (req, res) => {
     }
 })
 
-// UPDATE A STAGE
+
 stages.put('/:id', async (req, res) => {
     try {
         const updatedStages = await Stage.update(req.body, {
@@ -59,7 +61,6 @@ stages.put('/:id', async (req, res) => {
     }
 })
 
-// DELETE A STAGE
 stages.delete('/:id', async (req, res) => {
     try {
         const deletedStages = await Stage.destroy({
@@ -75,5 +76,4 @@ stages.delete('/:id', async (req, res) => {
     }
 })
 
-// EXPORT
 module.exports = stages

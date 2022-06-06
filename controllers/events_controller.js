@@ -1,10 +1,12 @@
-// DEPENDENCIES
+
+   
+// Dependencies
 const events = require('express').Router()
 const db = require('../models')
 const { Event } = db 
 const { Op } = require('sequelize')
 
-// FIND ALL EVENTS
+
 events.get('/', async (req, res) => {
     try {
         const foundEvents = await Event.findAll({
@@ -19,7 +21,7 @@ events.get('/', async (req, res) => {
     }
 })
 
-// FIND A SPECIFIC EVENT
+
 events.get('/:id', async (req, res) => {
     try {
         const foundEvent = await Event.findOne({
@@ -31,7 +33,7 @@ events.get('/:id', async (req, res) => {
     }
 })
 
-// CREATE AN EVENT
+
 events.post('/', async (req, res) => {
     try {
         const newEvent = await Event.create(req.body)
@@ -44,7 +46,7 @@ events.post('/', async (req, res) => {
     }
 })
 
-// UPDATE AN EVENT
+
 events.put('/:id', async (req, res) => {
     try {
         const updatedEvents = await Event.update(req.body, {
@@ -60,7 +62,7 @@ events.put('/:id', async (req, res) => {
     }
 })
 
-// DELETE AN EVENT
+
 events.delete('/:id', async (req, res) => {
     try {
         const deletedEvents = await Event.destroy({
@@ -76,5 +78,5 @@ events.delete('/:id', async (req, res) => {
     }
 })
 
-// EXPORT
+
 module.exports = events
